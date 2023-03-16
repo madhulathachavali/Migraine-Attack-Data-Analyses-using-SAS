@@ -1,6 +1,6 @@
 # Migraine-Attack-Data-Analyses-using-SAS
 
-This project covers analysis of the following sections:
+This project covers analysis of the following sections as per statistical analysis plan:
 
 1. Patients' demographics
 
