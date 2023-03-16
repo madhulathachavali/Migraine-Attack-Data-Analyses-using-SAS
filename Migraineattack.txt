@@ -1,0 +1,324 @@
+/*READ SAS DATAS*/
+
+libname MIGRAINE "\\VBOXSVR\vm_shared\Datasets\PR2\MIGRAINE";
+
+****************************************;
+
+ods rtf file='C:\Users\SDSP\Desktop\Migraine.rtf';
+
+/*Table 1. Average Age of Patients by Gender*/
+
+title1 c=blue f=bold  underlin=3 h=3 "Migraine Attack Data Analyses";
+title2 c=blue f=bold  lspace=5 underlin=1 h=2  "DEMOGRAPHICS OF PATIENTS";
+title3 c=blue  h=2 "Table 1. Average Age of Patients by Gender";
+footnote;
+proc tabulate data=Migraine.Ptdetails;
+class sex;
+classlev sex / style={just=center};
+var age;
+table sex = ' ',
+ age = ' '*(n mean = 'Mean Age') / box = 'Gender';
+run;
+
+****************************************;
+
+/*Table 2. Analysis of Smoking and Alcohol*/
+
+title c=blue  h=2  "Table 2. Analysis of Smoking and Alcohol";
+proc tabulate data=Migraine.history;
+class smoking alcohol;
+table smoking*n=' ' alcohol*n=' ';
+run;
+
+
+****************************************;
+
+/*Table 3. Analysis of Smoking History and Alcohol Consumption*/
+
+title c=blue  h=2  "Table 3. Analysis of Smoking History and Alcohol Consumption";
+proc tabulate data=migraine.history;
+var Smkyncig Smkyyears Alcyndpw;
+freq smkyncig;
+table Smkyncig = 'No. of Cigars smoked'
+Smkyyears = 'No. of years smoked'
+Alcyndpw = 'No. of Drinks per week',
+   (n mean std = 'Std Dev') / box = 'Label';
+run;
+
+
+****************************************;
+
+/*Table 4. Means of Blood Pressure and Pulse Rate*/
+
+title1 c=blue f=bold1 color=blue underlin=3 h=3 "VISIT 1";
+title2 c=blue f=bold2 color=blue h=2 underlin=1 "ANALYSIS OF CLINICAL EXAMINATION";
+title3 color=blue h=2 " Tabel 4. Means of Blood Pressure and Pulse Rate";
+proc tabulate data=Migraine.ClinicalExamv1v2;
+var Pulse Bpsystolic Bpdiastolic;
+table Pulse
+ Bpsystolic = 'Systolic Blood Pressure'
+ Bpdiastolic = 'Diastolic Blood Pressure',
+ (n mean std = 'Std Dev') / box = 'Label';
+ where Visit=1;
+run;
+****************************************;
+
+/*Table 5. Summary of Other diseases*/
+
+title c=blue  h=2  "Table 5. Summary of other diseases ";
+footnote c=blue  h=2 'Note: No patients were found with Angina, Myoinfa, Allergy and Cerinc';
+proc tabulate data=Migraine.ClinicalExamv1v2;
+class Cardio Respiratory Abdomen Cns;
+classlev Cardio Respiratory Abdomen Cns / style={just=center};
+table Cardio Respiratory Abdomen Cns = 'Central Nevrous System',
+ (n pctn = 'Percent') / box='Label';
+ where Visit=1;
+run;
+
+****************************************;
+
+/*Table 6. Analysis of Patient Blood History Data*/
+/*creating formats*/
+proc format;
+value $nfmt 'N'='Normal' 'WNL'='Within Normal Limits' 'NA'='Not Applicable'
+'Ne'='Negative';
+run;
+
+title1 c=blue f=bold  underlin=3 h=3 "LAB TESTING";
+title2 c=blue f=bold h=2 "Table 6. Anlysis of Patient Blood History Data";
+footnote;
+
+proc contents data=creatine;
+run;
+proc tabulate data=Migraine.Labtesting;
+var Sc Hg Urea Wbc Sodium Neutrophils Eosinophils Basophils Potassium Lymphocytes Sugar Monocytes Platelets Sb Sgot Sgpt;
+table Sc='SC' Hg ='Hemoglobin' Urea Wbc ='White Blood Cells' Sodium Neutrophils Eosinophils Basophils Potassium Lymphocytes Sugar Monocytes Platelets Sb='SB' Sgot='SGOT' Sgpt='SGPT',
+ (n mean*f=comma9.2 std*f=comma8.2) / box = 'Label';
+run;
+
+
+****************************************;
+
+/*Table 7. Summary of Urine Analysis, Pregnancy and ECG*/
+
+title c=blue  h=2 "Table 7. Summary of Urine Anlysis, Pregnancy and ECG";
+proc tabulate data=Migraine.labtesting;
+class Urineanalysis Urinepregnancy Ecg;
+classlev Urineanalysis Urinepregnancy Ecg / style={just=center};
+table Urineanalysis='Urine Analysis' Urinepregnancy = 'Pregnancy' Ecg='ECG',
+ (n pctn='Percent') / box='Label';
+format Urineanalysis Urinepregnancy Ecg $nfmt.;
+run;
+****************************************;
+
+/*Table 8. Averages of Time Since Initial Attack (Months), Frequency and Duration*/
+
+title1 c=blue f=bold  underlin=3 h=3 "MIGRAINE ATTACK";
+title2 c=blue f=bold h=2 "Table 8. Averages of Time Since Initial Attack (Month), Frequency and Duration";
+proc tabulate data=Migraine.Migraineattackdets;
+var V1attksincemonths V1attkfreqpm V1durationattk;
+table V1attksincemonths = 'Time Since Initial Attack (Months)'
+ V1attkfreqpm = 'Frequency Of Attack In A Month'
+ V1durationattk = 'Duration Of Attack (Hours)',
+ (n mean std ='Std Dev') / box ='Label';
+run;
+
+****************************************;
+
+/*Table 9. Analysis of Side Effects Due to Migraine Attack*/
+
+title c=blue  h=2 "Table 9. Analysis of Side Effects Due to Migraine Attack";
+proc tabulate data=Migraine.Migraineattackdets;
+class V1aura V1nausea V1Blurvision V1ptphobia V1pnphobia;
+classlev V1aura V1nausea V1Blurvision V1ptphobia V1pnphobia;
+table V1aura='Aura' 
+V1nausea = 'Nausea' 
+V1Blurvision='BlurredVision' 
+V1ptphobia = 'Photophobia' 
+V1pnphobia='Phonophobia',(n pctn='Percent') / box='Label';
+format Aura Nausea BlurredVision Photophobia Phonophobia $nfmt.;
+run;
+
+****************************************;
+
+/*Table10. Analysis of patient history based on drug intake for migraine*/
+
+title c=blue  h=2 "Table 10. Analysis of Patient History based on Drug Intake for Migraine";
+proc sql;
+   select Drintakecondition as x label='Drug Condition',
+		  Drintakedrug label='Drug',
+		  Drintakegeneric label='Generic',
+		  Drintakedose label= 'Dose',
+		  Drintakecontinues label = 'Continued',
+		  DrintakecontYdose label = 'Dose',
+		  Drintakenperiodofdisc label= 'Discontinuation',
+		  Drintakedur label = 'Duration'
+	from migraine.history where x ='migrane';
+quit;
+
+
+****************************************;
+
+title c=blue  h=2 "Table 11. Analysis of Patient History based on Drug Intake for other than Migraine";
+proc sql;
+   select Drintakecondition as x label='Drug Condition',
+		  Drintakedrug label='Drug',
+		  Drintakegeneric label='Generic',
+		  Drintakedose label= 'Dose',
+		  Drintakecontinues label = 'Continued',
+		  DrintakecontYdose label = 'Dose',
+		  Drintakenperiodofdisc label= 'Discontinuation',
+		  Drintakedur label = 'Duration'
+	from migraine.history where x ='others' and drintakedrug ^=' ';
+quit;
+
+****************************************;
+
+/*Table 12. Means of Blood Pressure and Pulse Rate*/
+
+title1 c=blue f=bold1 color=blue underlin=3 h=3 "VISIT 2";
+title2 c=blue f=bold2 color=blue h=2 underlin=1 "ANALYSIS OF CLINICAL EXAMINATION";
+title3 color=blue h=2 " Tabel 12. Means of Blood Pressure and Pulse Rate";
+proc tabulate data=Migraine.ClinicalExamv1v2;
+var Pulse Bpsystolic Bpdiastolic;
+table Pulse
+ Bpsystolic = 'Systolic Blood Pressure'
+ Bpdiastolic = 'Diastolic Blood Pressure',
+ (n mean std = 'Std Dev') / box = 'Label';
+ where Visit=2;
+run;
+
+****************************************;
+
+/* Table 13. Summary of Other Diseases */
+
+title c=blue  h=2  "Table 13. Summary of other diseases ";
+footnote c=blue  h=2 'Note: No patients were found with Angina, Myoinfa, Allergy and Cerinc';
+proc tabulate data=Migraine.ClinicalExamv1v2;
+class Cardio Respiratory Abdomen Cns;
+classlev Cardio Respiratory Abdomen Cns / style={just=center};
+table Cardio Respiratory Abdomen Cns = 'Central Nevrous System',
+ (n pctn = 'Percent') / box='Label';
+ where Visit=2;
+run;
+
+****************************************;
+
+/* Table 14.Initial Evaluation */
+data migraine.time;
+set migraine.visit2;
+Difference = intck('minutes',migreporttime, migpresentattktime);
+keep evanausea migpresentattktime migreporttime Difference;
+run;
+
+title1 c=blue f=bold  underlin=3 h=3 "Evaluation of Time Difference between Migraine Attack Time and Migraine Attack Reported Time, Nausea and Blood Pressure (Table 14 – Table 22)";
+title2 c=blue f=bold h=2 "Table 14. Initial Evaluation";
+footnote  c=blue h=2 'Note:  MAT - Migraine Attack Time.   MART - Migraine Attack Reported Time.';
+
+proc tabulate data=migraine.time;
+   	var evanausea Difference;
+	 table evanausea = 'Evaluation of Nausea' 
+		   Difference = 'Time Difference between MAT and MART',  
+		  (n mean std='Std Dev') / box='Label';
+run;
+****************************************;
+/*Table 15 Evaluation After 30 Minutes*/
+title c=blue  h=2 "Table 15. Evaluation After 30 Minutes";
+footnote;
+proc tabulate data=migraine.visit2;
+	var Sys Dia evanausea; 
+	table Sys = 'Systolic Blood Pressure'
+		  Dia = 'Diastolic Blood Pressure'
+		  evanausea = 'Evaluation of Nausea',
+		  (n mean std='Std Dev') / box = 'Label';
+	where EvaltimetypeHrs = '0.5hours'; 
+
+****************************************;
+/*Table 16 Evaluation After 1 Hour */
+
+title c=blue  h=2 "Table 16. Evaluation After 1 Hour";
+proc tabulate data=migraine.visit2;
+	var Sys Dia evanausea; 
+	table Sys = 'Systolic Blood Pressure'
+		  Dia = 'Diastolic Blood Pressure'
+		  evanausea = 'Evaluation of Nausea',
+		  (n mean std='Std Dev') / box = 'Label';
+	where EvaltimetypeHrs = '1hours';  
+run;
+
+****************************************;
+/*Table 17 Evaluation After 2 Hour*/
+
+title c=blue  h=2 "Table 17. Evaluation After 2 Hour";
+proc tabulate data=migraine.visit2;
+	var Sys Dia evanausea; 
+	table Sys = 'Systolic Blood Pressure'
+		  Dia = 'Diastolic Blood Pressure'
+		  evanausea = 'Evaluation of Nausea',
+		  (n mean std='Std Dev') / box = 'Label';
+	where EvaltimetypeHrs = '2hours';  
+run;
+
+****************************************;
+/*Table 18 Evaluation After 3 Hour*/
+
+title c=blue  h=2 "Table 18. Evaluation After 3 Hour";
+proc tabulate data=migraine.visit2;
+	var Sys Dia evanausea; 
+	table Sys = 'Systolic Blood Pressure'
+		  Dia = 'Diastolic Blood Pressure'
+		  evanausea = 'Evaluation of Nausea',
+		  (n mean std='Std Dev') / box = 'Label';
+	where EvaltimetypeHrs = '3hours';  
+run;
+
+****************************************;
+/*Table 19 Evaluation After 4 Hours*/
+title c=blue  h=2 "Table 19. Evaluation After 4 Hours";
+proc tabulate data=migraine.visit2;
+	var Sys Dia evanausea; 
+	table Sys = 'Systolic Blood Pressure'
+		  Dia = 'Diastolic Blood Pressure'
+		  evanausea = 'Evaluation of Nausea',
+		  (n mean std='Std Dev') / box = 'Label';
+	where EvaltimetypeHrs = '4hours';  
+run;
+
+/*Table 20 Evaluation After 6 Hours*/
+
+title c=blue  h=2  "Table 20. Evaluation After 6 Hours";
+proc tabulate data=migraine.visit2;
+	var Sys Dia evanausea; 
+	table Sys = 'Systolic Blood Pressure'
+		  Dia = 'Diastolic Blood Pressure',
+		  (n mean std='Std Dev') / box = 'Label';
+	where EvaltimetypeHrs = '6hours';  
+run;
+****************************************;
+/*Table 21 Evaluation between 6-24 Hours*/
+title c=blue  h=2 "Table 21. Evaluation between 6-24 Hours";
+proc tabulate data=migraine.visit2;
+	var Sys Dia evanausea; 
+	table Sys = 'Systolic Blood Pressure'
+		  Dia = 'Diastolic Blood Pressure',
+		  (n mean std='Std Dev') / box = 'Label';
+	where EvaltimetypeHrs = '6-24hours';  
+run;
+
+
+/* Table 22 Analysis of Functional Capability and Global Evaluation */
+title1 c=blue f=bold  underlin=3 h=3 "SUMMARY OF PATIENT STATUS";
+title2 c=blue f=bold h=2 "Table 22. Analysis of Functional Capability and Global Evaluation";
+option nodate nonumber;
+proc tabulate data=migraine.Summary;
+	class Funcdisability Ptglobalevaluation Invglobalevaluation Ptstdystatus;
+	classlev Funcdisability Ptglobalevaluation Invglobalevaluation Ptstdystatus / style={just=center};
+	table Funcdisability = 'Functional Disability'
+		  Ptglobalevaluation = 'Patient Global Evaluation'
+		  Invglobalevaluation = 'Investigation Global Evaluation'
+		  Ptstdystatus = 'Patient Study Status',
+		  (n pctn = 'Percent') /RTS=40 box='Label';
+run;
+*****************************************************************;
+
+ods rtf close;
