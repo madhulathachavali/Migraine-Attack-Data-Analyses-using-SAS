@@ -11,6 +11,7 @@ Analysis of Smoking and Alcohol Habits:
 
 Smoking:
 4 patients reported smoking, while 16 patients did not smoke.
+
 Alcohol Consumption:
 3 patients reported consuming alcohol, while 17 patients did not.
 Analysis of Smoking History and Alcohol Consumption:
