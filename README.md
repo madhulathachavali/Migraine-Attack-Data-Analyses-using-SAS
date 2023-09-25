@@ -57,6 +57,47 @@ d. Central Nervous System Examination:
 Clinically Normal: N=1 (5%)
 NAD: N=19 (95%)
 
+3. Lab Testing Data Analysis
+
+ A. Analysis of Patient Blood History Data:
+
+Serum Creatinine (SC): N=20, Mean=0.72, Std Dev=0.11
+Hemoglobin: N=19, Mean=12.34, Std Dev=1.21
+Urea: N=20, Mean=17.56, Std Dev=11.08
+White Blood Cells: N=17, Mean=10,670.59, Std Dev=1,382.37
+Sodium: N=13, Mean=124.38, Std Dev=7.87
+Neutrophils: N=20, Mean=68.85, Std Dev=3.66
+Eosinophils: N=11, Mean=4.18, Std Dev=7.63
+Basophils: N=4, Mean=0.50, Std Dev=0.58
+Potassium: N=13, Mean=4.47, Std Dev=0.32
+Lymphocytes: N=20, Mean=27.05, Std Dev=7.21
+Blood Sugar: N=20, Mean=111.70, Std Dev=26.32
+Monocytes: N=17, Mean=1.94, Std Dev=0.75
+Platelets: N=20, Mean=2.22, Std Dev=0.56
+Serum Bilirubin (SB): N=20, Mean=0.76, Std Dev=0.11
+Serum Glutamic Oxaloacetic Transaminase (SGOT): N=20, Mean=26.40, Std Dev=17.37
+Serum Glutamic Pyruvic Transaminase (SGPT): N=20, Mean=27.65, Std Dev=22.91
+
+B. Summary of Urine Analysis, Pregnancy, and ECG:
+
+Urine Analysis: N=1, Percent=6.67
+Normal (NAD): N=12, Percent=80.00
+Within Normal Limits: N=2, Percent=13.33
+Pregnancy: N=5, Percent=33.33
+Not Applicable: N=10, Percent=66.67
+ECG: N=1, Percent=6.67
+Clinically Normal: N=1, Percent=6.67
+Normal: N=1, Percent=6.67
+Within Normal Limits: N=12, Percent=80.00
+
+C. Averages of Time Since Initial Attack (Month), Frequency, and Duration:
+
+Time Since Initial Attack (Months): N=15, Mean=108.60, Std Dev=88.11
+Frequency Of Attack In A Month: N=20, Mean=5.50, Std Dev=5.50
+Duration Of Attack (Hours): N=20, Mean=171.00, Std Dev=252.52
+
+
+4. Summary of patient status
 
 
 
@@ -71,10 +112,4 @@ NAD: N=19 (95%)
 
 
 
-   
-
-4. Lab testing results
-
-5. Time difference evaluation between migraine attack time and reported time, nausea, and blood pressure 
-
-6. Summary of patient status
+ 
