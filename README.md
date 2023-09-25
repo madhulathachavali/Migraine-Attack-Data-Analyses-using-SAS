@@ -2,7 +2,7 @@
 
 This project contains the analysis of patient demographics, clinical assessments, laboratory tests, and patient data summaries.
 
-1. Summary of Patient Demographics Data:
+## 1. Summary of Patient Demographics Data:
 
 A. Patient Gender and Age:
 There were a total of 20 patients in the study.
@@ -22,7 +22,7 @@ Alcohol Consumption:
 Patients reported an average of 3.42 drinks per week, with a standard deviation of 0.50.
 
 
-2. Clinical examination analysis
+## 2. Clinical examination analysis
 
 A. Blood Pressure and Pulse Rate:
 
@@ -57,7 +57,7 @@ d. Central Nervous System Examination:
 Clinically Normal: N=1 (5%)
 NAD: N=19 (95%)
 
-3. Lab Testing Data Analysis
+## 3. Lab Testing Data Analysis
 
  A. Analysis of Patient Blood History Data:
 
@@ -97,7 +97,7 @@ Frequency Of Attack In A Month: N=20, Mean=5.50, Std Dev=5.50
 Duration Of Attack (Hours): N=20, Mean=171.00, Std Dev=252.52
 
 
-4. Summary of patient status
+## 4. Summary of patient status
 
 A. Analysis of Functional Capability and Global Evaluation
 
