@@ -98,7 +98,32 @@ Duration Of Attack (Hours): N=20, Mean=171.00, Std Dev=252.52
 
 
 4. Summary of patient status
+   
+A. Functional Disability:
 
+0: 14 patients (70.00%)
+
+1: 2 patients (10.00%)
+
+2: 4 patients (20.00%)
+
+B. Patient Global Evaluation:
+
+Excellent: 9 patients (45.00%)
+
+Good: 5 patients (25.00%)
+
+Poor: 2 patients (10.00%)
+
+Satisfactory: 4 patients (20.00%)
+
+C. Investigation Global Evaluation:
+
+Effective: 4 patients (20.00%)
+
+Not effective: 5 patients (25.00%)
+
+Very effective: 11 patients (55.00%)
 
 
 
