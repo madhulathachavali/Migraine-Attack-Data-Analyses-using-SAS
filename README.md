@@ -22,7 +22,7 @@ Alcohol Consumption:
 Patients reported an average of 3.42 drinks per week, with a standard deviation of 0.50.
 
 
-## 2. Clinical examination analysis
+## 2. Clinical Examination Analysis
 
 A. Blood Pressure and Pulse Rate:
 
@@ -97,7 +97,7 @@ Frequency Of Attack In A Month: N=20, Mean=5.50, Std Dev=5.50
 Duration Of Attack (Hours): N=20, Mean=171.00, Std Dev=252.52
 
 
-## 4. Summary of patient status
+## 4. Summary of Patient Status
 
 A. Analysis of Functional Capability and Global Evaluation
 
