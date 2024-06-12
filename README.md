@@ -126,6 +126,9 @@ d. Patient Study Status: All 20 patients (100.00%) were included in the study.
 Very effective: 11 patients (55.00%)
 
 
+*******************************************************;
+
+
 
 
 
